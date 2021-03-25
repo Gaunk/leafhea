@@ -7,16 +7,20 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   {% if title %}
-  <title>Leafhea Gutha Soap {{title}}</title>
+  <title>Leafhea Glutha Soap {{title}}</title>
   {% else %}
-  <title>Leafhea Gutha Soap</title>
+  <title>Leafhea Glutha Soap</title>
   {% endif %}
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/icon-leafhea-min21-192x192.png' %}" rel="icon">
   <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link rel="manifest" href="{% static 'img/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'img/icon-leafhea-min21-192x192.png'%}">
+    <meta name="theme-color" content="#ffffff">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
@@ -41,46 +45,44 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header">
-    <div class="container">
-
-      <div id="logo" class="pull-left">
-        <img src="{% static 'img/logo-leafhea.png' %}">
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" title="" /></a>-->
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#header">Home</a></li>
-          <li><a href="#about">About</a></li>
-           <li><a href="#team">Team Member</a></li>
-          <li><a href="#testimonials">Testimoni</a></li> 
-          <li><a href="#harga">Harga</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Welcome to Leafhea</h1>
-      <img src="{% static 'img/1.jpeg' %}" alt="Hero Imgs" data-aos="zoom-out" data-aos-delay="100">
-      <a href="#get-started" class="btn-get-started scrollto">Get Started</a>
-      <div class="btns">
-        <a href="#"><i class="fa fa-apple fa-3x"></i> App Store</a>
-        <a href="#"><i class="fa fa-play fa-3x"></i> Google Play</a>
-        <a href="#"><i class="fa fa-windows fa-3x"></i> windows</a>
-      </div>
-    </div>
-  </section><!-- End Hero Section -->
+  {% include 'navbar.html' %}
 
   <main id="main">
+  <!-- ======= Produk Section ======= -->
+    <section id="team" class="padd-section text-center">
 
-    <!-- ======= Get Started Section ======= -->
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+        </div>
+
+        <div class="row">
+{% for tambah_produk in tambah_produk %}
+          <div class="col-md-7 col-md-5 col-lg-3 mt-3" data-aos="zoom-in" data-aos-delay="100">
+            <div class="team-block bottom">
+              <img src="{{tambah_produk.img_produk.url}}" class="img-responsive img-thumbnail mw-100" alt="img">
+              <div class="team-content">
+                <ul class="list-unstyled">
+                  <li><a href="#"><button class="btn btn-info btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                  </svg>
+                  </button>
+                  
+                  </a>
+                  </li>
+                </ul>
+                <span>{{tambah_produk.harga}}</span>
+                <h4 class="text-monospace font-weight-bold">{{tambah_produk.title}}</h4>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+         
+
+        </div>
+      </div>
+    </section><!-- End Produk Section -->
+
+    <!-- ======= Get Started Section ======= 2-->
     <section id="get-started" class="padd-section text-center">
 
       <div class="container" data-aos="fade-up">
@@ -133,7 +135,7 @@
         </div>
       </div>
 
-    </section><!-- End Get Started Section -->
+    </section><!-- End Get Started Section 2-->
 
     <!-- ======= Features Section ======= -->
     <section id="about" class="padd-section text-center">
@@ -141,66 +143,20 @@
       <div class="container" data-aos="fade-up">
         <div class="section-title text-center">
           <h1>Fakta <span>Leafhea</span> Glutha Soap</h1>
-          <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+          <p class="separator">Mengandung 7 Bahan Aktif.</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
-
+    {% for produk in produk %}
           <div class="col-md-6 col-lg-3">
             <div class="feature-block">
-              <img src="{% static 'img/leaf/1.jpeg' %}" alt="img">
-              <h4>creative design</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+              <img src="{{produk.img.url}}" alt="img">
+              <h4>{{produk.title}}</h4>
+              <p>{{produk.deskripsi}}</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3">
-            <div class="feature-block">
-              <img src="{% static 'img/leaf/2.jpeg' %}" alt="img">
-              <h4>Retina Ready</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="feature-block">
-              <img src="{% static 'img/leaf/3.jpeg' %}" alt="img">
-              <h4>easy to use</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="feature-block">
-              <img src="{% static 'img/leaf/4.jpeg' %}" alt="img">
-              <h4>Free Updates</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="feature-block">
-              <img src="{% static 'img/leaf/5.jpeg' %}" alt="img">
-              <h4>Free Updates</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="feature-block">
-              <img src="{% static 'img/leaf/6.jpeg' %}" alt="img">
-              <h4>App store support</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="feature-block">
-              <img src="{% static 'img/leaf/7.jpeg' %}" alt="img">
-              <h4>Perfect Pixel</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-            </div>
-          </div>
+          {% endfor %}
 
         </div>
       </div>
@@ -211,22 +167,19 @@
 
       <div class="container" data-aos="fade-up">
         <div class="section-title text-center">
-          <h2>App Gallery</h2>
-          <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+          <h2>Apa Kata Mereka</h2>
+          <p class="separator">Lefhea Bagus Untuk Perawatan .</p>
         </div>
 
-        <div class="owl-carousel owl-theme" data-aos="fade-up" data-aos-delay="100">
+        <div class="owl-carousel owl-theme" data-aos="fade-up" data-aos-delay="10">
+{% for kata in katamereka  %}
+          <div class="img-thumbnail">
+          
+          <img src="{{kata.img_mereka.url}}" alt="img">
+          
+          </div>
 
-          <div><img src="{% static 'img/screen/1.jpg'%}" alt="img"></div>
-          <div><img src="assets/img/screen/2.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/3.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/4.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/5.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/6.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/7.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/8.jpg" alt="img"></div>
-          <div><img src="assets/img/screen/9.jpg" alt="img"></div>
-
+{% endfor %}
         </div>
       </div>
 
@@ -252,14 +205,14 @@
         <div class="section-title text-center">
 
           <h2>Team Member</h2>
-          <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+          <p class="separator">Bergabung Bersama Para Member .</p>
         </div>
 
         <div class="row">
 
           <div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
             <div class="team-block bottom">
-              <img src="assets/img/team/1.jpg" class="img-responsive" alt="img">
+              <img src="{% static 'img/team/1.jpg' %}" class="img-responsive" alt="img">
               <div class="team-content">
                 <ul class="list-unstyled">
                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -333,38 +286,26 @@
 
                 <div class="carousel-inner" role="listbox">
 
-                  <div class="carousel-item  active">
+                
+                  <div class="carousel-item active">
                     <div class="top-top">
-
-                      <h2>Our Users Speack volumes us</h2>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries.</p>
-                      <h4>Kimberly Tran<span>manager</span></h4>
-
+                      <h2>Lefhea sabun yang bagus banget</h2>
+                      <p>Saya tadinya tidak percaya diri, karena wajah saya banyak jerawat. tapi ketemu di google diwebsite resminya, saya beli lefhea. Ternyata cocok banget dengan kulit saya, saya suka Lefhea is the best!!</p>
+                      <h4>Andriani<span>Kelurahan</span></h4>
                     </div>
                   </div>
 
-                  <div class="carousel-item ">
+                  {% for testimoni in testimoni %}
+                  <div class="carousel-item">
                     <div class="top-top">
 
-                      <h2>Our Users Speack volumes us</h2>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries.</p>
-                      <h4>Henderson<span>manager</span></h4>
+                      <h2>{{testimoni.title}}</h2>
+                      <p>{{testimoni.text}}</p>
+                      <h4>{{testimoni.nama}}<span>{{testimoni.jabatan}}</span></h4>
 
                     </div>
                   </div>
-
-                  <div class="carousel-item ">
-                    <div class="top-top">
-
-                      <h2>Our Users Speack volumes us</h2>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries.</p>
-                      <h4>David Spark<span>manager</span></h4>
-
-                    </div>
-                  </div>
+                  {% endfor %}
 
                 </div>
 
