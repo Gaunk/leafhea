@@ -53,3 +53,19 @@ class Video(models.Model):
 
     def __str__(self):
         return self.caption
+
+
+class TambahMember(models.Model):
+    KATEGORI = (
+        ('Member', 'Member'),
+        ('Leader', 'Leader'),
+        ('Supervisor', 'Supervisor'),
+        ('Manager', 'Manager'),
+    )
+    nama = models.CharField(max_length=70)
+    pekerjaan = models.CharField(max_length=50)
+    kategori = models.CharField(max_length=200, null=True, choices=KATEGORI)
+    img_member = models.ImageField(upload_to='member')
+
+    def __str__(self):
+        return self.nama
