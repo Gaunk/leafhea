@@ -41,3 +41,15 @@ class KataMereka(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Video(models.Model):
+    caption = models.CharField(max_length=50)
+    video = models.FileField(upload_to='video')
+
+    class Meta:
+        verbose_name = 'video'
+        verbose_name_plural = 'video'
+
+    def __str__(self):
+        return self.caption

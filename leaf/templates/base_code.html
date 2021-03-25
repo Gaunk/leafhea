@@ -46,7 +46,7 @@
 <body>
 
   {% include 'navbar.html' %}
-
+    
   <main id="main">
   <!-- ======= Produk Section ======= -->
     <section id="team" class="padd-section text-center">
@@ -189,11 +189,13 @@
     <section id="video" class="text-center">
       <div class="overlay">
         <div class="container-fluid container-full" data-aos="zoom-in">
-
+{% for video in video  %}
           <div class="row">
-            <a href="#" class="js-modal-btn play-btn" data-video-id="s22ViV7tBKE"></a>
+            <video class="embed-responsive embed-responsive-16by9" controls="controls">
+              <source src="{{video.video.url}}" type="video/mp4" />
+            </video>
           </div>
-
+{% endfor %}
         </div>
       </div>
     </section><!-- End Video Section -->

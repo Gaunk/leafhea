@@ -52,3 +52,18 @@
   </a>
 </div>
 <!-- AKHIR SLIDER -->
+<!-- ======= Video Section ======= -->
+    <section class="text-center">
+      <div class="overlay">
+        <div class="container-fluid" data-aos="zoom-in">
+          <div class="row">
+            {% for video in video %}
+    <video width="100%" height="500" controls >
+    <source src="{{video.video.url}}" type="video/mp4">
+    </video>
+    {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </section><!-- End Video Section -->
